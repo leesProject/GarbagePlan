@@ -1,0 +1,24 @@
+service: GarbagePlan-tenant-info-update # NOTE: update this with your service name
+
+provider:
+  name: aws
+  runtime: python3.6
+
+# you can overwrite defaults here
+  stage: api
+  region: ap-northeast-1
+
+# you can add statements to the Lambda function's IAM Role here
+  iamRoleStatements:
+    - Effect: "Allow"
+      Resource: "arn:aws:dynamodb:ap-northeast-1:*:*"
+      Action:
+        - "dynamodb:Query"
+        - "dynamodb:PutItem"
+        - "dynamodb:DeleteItem"
+
+functions:
+  tenant_info_update:
+    handler: handler.tenant_info_update
+    events:
+      - schedule: cron(0 16 ? * MON-SUN *)

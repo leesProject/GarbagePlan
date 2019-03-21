@@ -1,0 +1,34 @@
+plugins:
+ - serverless-plugin-existing-s3
+
+service: GarbagePlan-send-tenant-move-info # NOTE: update this with your service name
+
+provider:
+  name: aws
+  runtime: python3.6
+
+# you can overwrite defaults here
+  stage: api
+  region: us-west-2
+
+# you can add statements to the Lambda function's IAM Role here
+  iamRoleStatements:
+    - Effect: "Allow"
+      Resource: "arn:aws:sns:*:*:*"
+      Action:
+        - "sns:Publish"
+    - Effect: "Allow"
+      Resource:
+        Fn::Join:
+          - ""
+          - - "arn:aws:s3:::*"
+      Action:
+        - "s3:PutBucketNotification"
+
+functions:
+  send_tenant_move_info:
+    handler: handler.send_tenant_move_info
+    events:
+      - s3:
+          bucket: tenant-received-moving-info
+          event: s3:ObjectCreated:*

@@ -1,0 +1,20 @@
+service: GarbagePlan-tenant-move-info # NOTE: update this with your service name
+
+provider:
+  name: aws
+  runtime: python3.6
+
+# you can overwrite defaults here
+  stage: api
+  region: ap-northeast-1
+
+# you can add statements to the Lambda function's IAM Role here
+  iamRoleStatements:
+    - Effect: "Allow"
+      Resource: "arn:aws:dynamodb:ap-northeast-1:*:*"
+      Action:
+        - "dynamodb:PutItem"
+
+functions:
+  tenant_move_info:
+    handler: handler.tenant_move_info

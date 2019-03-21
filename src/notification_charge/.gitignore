@@ -1,0 +1,31 @@
+# Distribution / packaging
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+chardet/
+chardet-3.0.4.dist-info/
+idna/
+idna-2.7.dist-info/
+certifi/
+certifi-2018.4.16.dist-info/
+urllib3/
+urllib3-1.23.dist-info/
+requests/
+requests-2.19.1.dist-info/
+
+# Serverless directories
+.serverless
