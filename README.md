@@ -1,21 +1,18 @@
-# GarbagePlan
-We are lazy that announcement to our member about garbage duty 😩
+・概要
+居住中シェアハウスに居住者の入れ替えが頻繁なため、居住者の入れ替え管理自動化ツール開発。
 
-🗑 This program is automation notification of Today's garbage duty 🗑
+・担当部分
+GarbagePlan/src/send_tenant_move_info/
+GarbagePlan/src/tenant_info_update/tenant_info_update/
+GarbagePlan/src/tenant_move_info/
 
-![garbage_plan](https://github.com/mym-kingbob/garbage-plan/blob/master/contents/garbage_day_image.jpeg)
+・前提条件
+‐居住者の入居、退居の予告は数日前にメールにて通知される。
+‐通知メールのContent-Transfer-Encodingはquoted-printableである。
 
-## Requirement
-### Cloud Service
-* AWS
-  * Lambda
-  * DynamoDB
-  * SES
-  * SNS
-
-### API・Framework
-* [LINE API Messaging API](https://developers.line.me/ja/docs/messaging-api/overview/)
-* [Serverless Framework](https://serverless.com/)
-
-## Algorithm
-[Algorithm document](https://github.com/mym-kingbob/garbage-plan/blob/master/doc/algorithm.md)
+・開発環境
+‐AWS
+    Lambda(Python3.6)
+    DynamoDB
+    SES
+    SNS
