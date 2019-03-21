@@ -27,3 +27,7 @@ GarbagePlan/src/tenant_move_info/
     SES
     
     SNS
+
+・開発人数
+
+2人
